@@ -16,3 +16,74 @@
 @import url('./badges.css'); */
 @import url('./back-link.css');
 /* @import url('./footer.css'); */
+
+/* Стилізація загального контейнера */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+  text-align: center;
+}
+
+/* Поле для вибору дати та кнопка */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+#datetime-picker {
+  width: 240px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[data-start] {
+  padding: 8px 16px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #4e75ff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[data-start]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button[data-start]:hover:enabled {
+  background-color: #6c8cff;
+}
+
+/* Стилізація таймера */
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.value {
+  font-size: 36px;
+  font-weight: bold;
+  color: #4e75ff;
+}
+
+.label {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #808080;
+}
