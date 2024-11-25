@@ -6,13 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Promise generator</title>
     <link rel="stylesheet" href="./css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
+    />
   </head>
   <body>
     <main>
       <div class="container">
         <a class="back-link" href="./index.html">Go back</a>
         <h1 class="main-title">Promise generator</h1>
-        <!-- <load src="./partials/back-link.html" /> -->
+
+        <form class="form">
+          <label>
+            Delay (ms)
+            <input type="number" name="delay" required />
+          </label>
+
+          <fieldset>
+            <legend>State</legend>
+            <label>
+              <input type="radio" name="state" value="fulfilled" required />
+              Fulfilled
+            </label>
+            <label>
+              <input type="radio" name="state" value="rejected" required />
+              Rejected
+            </label>
+          </fieldset>
+
+          <button type="submit">Create notification</button>
+        </form>
       </div>
     </main>
     <script type="module" src="./js/2-snackbar.js"></script>

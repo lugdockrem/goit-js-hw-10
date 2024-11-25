@@ -13,12 +13,10 @@ const secondsField = document.querySelector('[data-seconds]');
 let timerInterval = null;
 let userSelectedDate = null;
 
-// Функція для додавання ведучого нуля
 function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
 }
 
-// Функція для конвертації мілісекунд у дні, години, хвилини, секунди
 function convertMs(ms) {
   const second = 1000;
   const minute = second * 60;
@@ -33,7 +31,6 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-// Функція для оновлення таймера
 function updateTimer() {
   const now = new Date();
   const remainingTime = userSelectedDate - now;
@@ -41,14 +38,13 @@ function updateTimer() {
   if (remainingTime <= 0) {
     clearInterval(timerInterval);
 
-    // Встановлюємо всі поля в нулі
     daysField.textContent = '00';
     hoursField.textContent = '00';
     minutesField.textContent = '00';
     secondsField.textContent = '00';
 
     startBtn.disabled = true;
-    datetimePicker.disabled = false; // Дозволяємо вибирати нову дату
+    datetimePicker.disabled = false;
     iziToast.success({
       title: 'Timer Complete!',
       message: 'The countdown has finished!',
@@ -57,7 +53,6 @@ function updateTimer() {
   } else {
     const { days, hours, minutes, seconds } = convertMs(remainingTime);
 
-    // Оновлення інтерфейсу
     daysField.textContent = days.toString();
     hoursField.textContent = addLeadingZero(hours);
     minutesField.textContent = addLeadingZero(minutes);
@@ -65,7 +60,6 @@ function updateTimer() {
   }
 }
 
-// Ініціалізація Flatpickr
 flatpickr('#datetime-picker', {
   enableTime: true,
   time_24hr: true,
@@ -90,13 +84,11 @@ flatpickr('#datetime-picker', {
   },
 });
 
-// Обробник події для кнопки "Старт"
 startBtn.addEventListener('click', () => {
   if (userSelectedDate && userSelectedDate > new Date()) {
     startBtn.disabled = true;
     datetimePicker.disabled = true;
 
-    // Запуск таймера
     timerInterval = setInterval(updateTimer, 1000);
 
     iziToast.info({
